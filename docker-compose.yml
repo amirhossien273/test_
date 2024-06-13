@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  react-app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/node_modules
+    command: npm run serve
+    network_mode: "host"
+    hostname: "0.0.0.0"
