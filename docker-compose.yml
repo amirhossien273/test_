@@ -1,13 +1,15 @@
 version: '3.8'
-
 services:
-  react-app:
-    build: .
+  test-react-app:
+    image: test-react-app  # Replace with the actual image name if it exists
+    container_name: dockerize-vuejs-app-2
     ports:
       - "8080:8080"
     volumes:
       - .:/var/www/html
       - /var/www/html/node_modules
-    command: npm run serve
-    network_mode: "host"
-    hostname: "0.0.0.0"
+    stdin_open: true
+    tty: true
+    restart: "no"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
